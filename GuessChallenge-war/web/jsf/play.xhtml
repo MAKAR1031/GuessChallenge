@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../templates/template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="title">
+        Играть
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form>
+            <h2 class="title">Игра</h2>
+            <p>
+                Я загадал число от 1 до 10, сможешь ли ты угадать его?
+            </p>
+            <div class="center">
+                <h:inputText value="#{controller.userNumber}" class="input" rendered="true"/><br/>
+                <h:commandButton action="#{controller.turn()}" value="Сделать ход" class="button">
+                    <f:ajax execute="@form" render="data"/>
+                </h:commandButton>
+            </div>
+            <h:panelGroup id="data">
+                <h3 class="title message">
+                    <h:outputText value="#{controller.message}"/>
+                </h3>
+                <h3>Информация:</h3>
+                <h:outputText value="Угадано всего: #{controller.currentUser.count}"/><br/>
+                <h:outputText value="Текущая серия: #{controller.maxCombo}"/><br/>
+                <h:outputText value="Всего игроками сделано попыток #{controller.attemptCounter}"/><br/>
+            </h:panelGroup>
+            <hr/>
+            <div class="buttons">
+                <h:button outcome="index" value="На главную" class="button"/>
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>

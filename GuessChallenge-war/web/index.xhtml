@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                template="./templates/template.xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:define name="title">
+        Главная
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form>
+            <c:choose>
+                <c:when test="#{controller.represented}">
+                    <h2 class="title">Добро пожаловать, #{controller.currentUser.name}!</h2>
+                    <div class="buttons">
+                        <h:button outcome="play" value="Играть" class="button"/>
+                        <h:button outcome="achivments" value="Мои достижения" class="button"/>
+                        <h:button outcome="rating" value="Списки лидеров" class="button"/>
+                        <h:commandButton action="#{controller.exit()}" value="Выйти" class="button"/>
+                        <h:commandButton action="#{controller.removeUser()}" value="Забудь меня" class="button"/>
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <h2 class="title">Для того, чтобы начать, пожалуйста представьтесь</h2>
+                    <div class="center">
+                        <h:outputLabel for="name" value="Итак, ваше имя: "/>
+                        <h:inputText id="name" value="#{controller.userName}" class="input">
+                            <f:validateLength minimum="2"/>
+                        </h:inputText>
+                        <h:commandButton action="#{controller.represent()}" value="Представиться" class="button"/>
+                    </div>
+                </c:otherwise>
+            </c:choose>
+        </h:form>
+    </ui:define>
+</ui:composition>

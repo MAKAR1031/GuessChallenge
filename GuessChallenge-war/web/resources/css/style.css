@@ -1,0 +1,89 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: "Verdana";
+    font-size: 1.1em;
+    background-color: lightgray;
+}
+
+.main {
+    padding: 20px;
+    width: 85%;
+    margin: 25px auto;
+    background-color: snow;
+    box-shadow: 5px 5px 7px gray;
+}
+
+.center {
+    width: 100%;
+    text-align: center;
+}
+
+.title {
+    text-align: center;
+}
+
+.message {
+    animation-name: fadeIn;
+    animation-duration: 1s;
+}
+
+.input, .button {
+    font-size: 1.2em;
+    font-family: "Verdana";
+    border-radius: 15px;
+    border: 1px solid lightblue;
+    padding: 5px 10px;
+    transition-delay:  0.5s;
+    transition-property: none;
+    box-shadow: 1px 1px 3px gray;
+}
+
+.buttons {
+    width: 90%;
+    margin: 10px auto;
+    text-align: center;
+}
+
+.input {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.input:focus, .button:focus {
+    outline: none;
+}
+
+.button {
+    margin: 0 10px;
+    background-color: whitesmoke;
+    transition: all 0.5s;
+}
+
+.button:hover {
+    background-color: #999;
+    color: #78ffc2;
+}
+
+.data_table {
+    width: 85%;
+    margin: 20px auto;
+    text-align: center;
+    border-collapse: separate;
+    border: 1px solid lightblue;
+    border-radius: 15px;
+    font-size: 1.2em;
+}
+
+.data_table tr {
+    border-bottom: 1px solid gray;
+}
+
+.data_table  tr:nth-child(2n+1) td {
+    background-color: lightblue;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
